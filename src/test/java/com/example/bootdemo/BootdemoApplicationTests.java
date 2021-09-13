@@ -11,13 +11,27 @@ class BootdemoApplicationTests {
 	@Autowired
 	private BookRepository bookRepository;
 
+	//Test on repo branch
 	@Test
-	void contextLoads() {
+	void testSaveOnRepo() {
+		Book book = new Book("Art of Coding", "JJJ", 120);
+		bookRepository.save(book);
 	}
 
 	@Test
-	void testSave() {
-		Book book = new Book("Art of Coding", "JJJ", 120);
+	void testReadOnRepo() {
+		System.out.println(bookRepository.findAll());
+	}
+
+	@Test
+	void testUpdateOnRepo() {
+		Book book = bookRepository.findAll().get(0);
+		book.setPage(200);
 		bookRepository.save(book);
+	}
+
+	@Test
+	void testDeleteOnRepo() {
+		bookRepository.deleteAll();
 	}
 }
